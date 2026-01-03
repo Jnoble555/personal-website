@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -56,6 +60,18 @@ body {
   text-decoration: underline;
 }
 
+.nav-cta {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.nav-cta:hover {
+  text-decoration: none;
+  background: #f3f4f6;
+}
+
 /* Sections */
 .section {
   padding: 36px 0;
@@ -78,6 +94,12 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 16px;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
 .card h3 {
@@ -109,12 +131,35 @@ body {
 
 /* Card link */
 .card-link {
+  display: inline-block;
+  margin-top: 6px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
 }
 
 .card-link:hover {
+  text-decoration: underline;
+}
+
+/* Contact section */
+.contact-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  max-width: 500px;
+}
+
+.contact-list span {
+  font-weight: 700;
+}
+
+.contact-list a {
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.contact-list a:hover {
   text-decoration: underline;
 }
 
@@ -145,42 +190,4 @@ body {
     margin-left: 0;
     margin-right: 14px;
   }
-}
-
-
-/* Contact section */
-.contact-list {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px 16px;
-  max-width: 500px;
-}
-
-.contact-list span {
-  font-weight: 700;
-}
-
-.contact-list a {
-  text-decoration: none;
-  color: #2563eb;
-}
-
-.contact-list a:hover {
-  text-decoration: underline;
-}
-
-.project-subtitle {
-  color: #4b5563;
-  margin-top: 8px;
-  max-width: 780px;
-}
-
-.bullets {
-  margin: 10px 0 0;
-  padding-left: 20px;
-  color: #374151;
-}
-
-.bullets li {
-  margin-bottom: 8px;
 }

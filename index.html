@@ -10,139 +10,150 @@
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <header>
-      <nav class="nav">
-        <div class="nav-left">Jack Noble</div>
-        <div class="nav-right">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-          <a
-            class="nav-cta"
-            href="assets/Jack-Noble-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Resume
-          </a>
-        </div>
-      </nav>
-    </header>
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">Jack Noble</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a
+          class="nav-cta"
+          href="assets/Jack-Noble-Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume
+        </a>
+      </div>
+    </nav>
 
     <main>
-      <!-- ABOUT -->
-      <section id="about">
-        <h1>Hello, I'm Jack</h1>
-        <p>
-          I'm a Fordham Information Systems student focused on data analytics and
-          database systems. I build clean, decision-ready analysis—from messy
-          data to clear insights—using Python, SQL, and visualization tools. I'm
-          currently recruiting for Summer 2026 internships in NYC.
-        </p>
+      <!-- HERO SECTION -->
+      <section class="hero" id="about">
+        <div class="hero-content">
+          <div class="eyebrow">Data Analyst • NYC</div>
+          <h1>Hello, I'm Jack</h1>
+          <p class="subtitle">
+            I'm a Fordham Information Systems student focused on <span class="highlight">data analytics</span> and <span class="highlight">database systems</span>. I build clean, decision-ready analysis—from messy data to clear insights—using Python, SQL, and visualization tools. Currently recruiting for Summer 2026 internships in NYC.
+          </p>
+          <div class="cta-group">
+            <a href="#projects" class="cta-primary">View Projects</a>
+            <a href="#contact" class="cta-secondary">Get in Touch</a>
+          </div>
+        </div>
       </section>
 
       <!-- PROJECTS -->
-      <section id="projects">
-        <h2>Projects</h2>
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <h2>Projects</h2>
 
-        <!-- Project 1 -->
-        <article class="card">
-          <h3>NYC Opportunity Index</h3>
-          <p>
-            Built a data-driven index to evaluate NYC neighborhoods based on
-            affordability, commute access, and opportunity signals to support
-            student decision-making.
-          </p>
-          <div class="pill-row">
-            <span class="pill">Python</span>
-            <span class="pill">Pandas</span>
-            <span class="pill">Data Analysis</span>
-          </div>
-          <a class="card-link" href="nyc-opportunity-index.html">
-            Open case study →
-          </a>
-        </article>
+          <!-- Project 1 -->
+          <article class="card">
+            <h3>NYC Opportunity Index</h3>
+            <p>
+              Built a data-driven index to evaluate NYC neighborhoods based on
+              affordability, commute access, and opportunity signals to support
+              student decision-making.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">Pandas</span>
+              <span class="pill">Data Analysis</span>
+            </div>
+            <a class="card-link" href="nyc-opportunity-index.html">
+              Open case study →
+            </a>
+          </article>
 
-        <!-- Project 2 - STRAVA ANALYTICS -->
-        <article class="card">
-          <h3>Running Performance Analytics Dashboard</h3>
-          <p>
-            Built an interactive dashboard analyzing 346 miles of running data via Strava API. 
-            Identified 5x volume growth over 5 months and optimal training patterns using 
-            Python data analysis and Plotly visualizations.
-          </p>
-          <div class="pill-row">
-            <span class="pill">Python</span>
-            <span class="pill">Strava API</span>
-            <span class="pill">Plotly</span>
-          </div>
-          <a class="card-link" href="strava-analytics.html">
-            View dashboard →
-          </a>
-        </article>
+          <!-- Project 2 - STRAVA ANALYTICS -->
+          <article class="card">
+            <h3>Running Performance Analytics Dashboard</h3>
+            <p>
+              Built an interactive dashboard analyzing 346 miles of running data via Strava API. 
+              Identified 5x volume growth over 5 months and optimal training patterns using 
+              Python data analysis and Plotly visualizations.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">Strava API</span>
+              <span class="pill">Plotly</span>
+            </div>
+            <a class="card-link" href="strava-analytics.html">
+              View dashboard →
+            </a>
+          </article>
 
-        <!-- Project 3 -->
-        <article class="card">
-          <h3>NYC Internship Skill Demand Analyzer</h3>
-          <p>
-            Analyzed NYC internship postings to identify the most requested
-            skills across analytics roles and translate findings into a clear
-            preparation roadmap for applicants.
-          </p>
-          <div class="pill-row">
-            <span class="pill">Python</span>
-            <span class="pill">Pandas</span>
-            <span class="pill">Text Analysis</span>
-          </div>
-          <span class="status-pill">In progress</span>
-        </article>
+          <!-- Project 3 -->
+          <article class="card">
+            <h3>NYC Internship Skill Demand Analyzer</h3>
+            <p>
+              Analyzed NYC internship postings to identify the most requested
+              skills across analytics roles and translate findings into a clear
+              preparation roadmap for applicants.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">Pandas</span>
+              <span class="pill">Text Analysis</span>
+            </div>
+            <span class="status-pill">In progress</span>
+          </article>
 
-        <!-- Project 4 -->
-        <article class="card">
-          <h3>SQL KPI Dashboard (Orders & Customers)</h3>
-          <p>
-            Designed a relational schema and wrote KPI queries (AOV, retention,
-            revenue trends) to support business decision-making.
-          </p>
-          <div class="pill-row">
-            <span class="pill">SQL</span>
-            <span class="pill">Data Modeling</span>
-            <span class="pill">BI</span>
-          </div>
-          <span class="status-pill">In progress</span>
-        </article>
+          <!-- Project 4 -->
+          <article class="card">
+            <h3>SQL KPI Dashboard (Orders & Customers)</h3>
+            <p>
+              Designed a relational schema and wrote KPI queries (AOV, retention,
+              revenue trends) to support business decision-making.
+            </p>
+            <div class="pill-row">
+              <span class="pill">SQL</span>
+              <span class="pill">Data Modeling</span>
+              <span class="pill">BI</span>
+            </div>
+            <span class="status-pill">In progress</span>
+          </article>
+        </div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          Email:
-          <a href="mailto:jnoble12@fordham.edu">jnoble12@fordham.edu</a>
-          <br />
-          LinkedIn:
-          <a
-            href="https://www.linkedin.com/in/john-noble5/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://www.linkedin.com/in/john-noble5/
-          </a>
-          <br />
-          GitHub:
-          <a
-            href="https://github.com/Jnoble555"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://github.com/Jnoble555
-          </a>
-        </p>
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2>Contact</h2>
+          <p>
+            Email:
+            <a href="mailto:jnoble12@fordham.edu">jnoble12@fordham.edu</a>
+            <br />
+            LinkedIn:
+            <a
+              href="https://www.linkedin.com/in/john-noble5/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.linkedin.com/in/john-noble5/
+            </a>
+            <br />
+            GitHub:
+            <a
+              href="https://github.com/Jnoble555"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/Jnoble555
+            </a>
+          </p>
+        </div>
       </section>
     </main>
 
@@ -151,4 +162,3 @@
     </footer>
   </body>
 </html>
-

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celtics Championship DNA | SQL Analysis</title>
+    <meta name="description" content="SQL analysis comparing the 2024 Celtics championship team to recent NBA champions using advanced database queries and statistical analysis.">
     <style>
         * {
             margin: 0;
@@ -18,10 +19,43 @@
             line-height: 1.6;
         }
         
+        /* Back to Home Button */
+        .back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .back-button {
+            background: white;
+            color: #007A33;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        .back-button::before {
+            content: '←';
+            font-size: 16px;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 80px 20px 40px;
         }
         
         .header {
@@ -140,6 +174,20 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
         
+        .methodology h2 {
+            color: #007A33;
+            margin-bottom: 15px;
+        }
+        
+        .methodology ul {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        
+        .methodology li {
+            margin-bottom: 8px;
+        }
+        
         .footer {
             text-align: center;
             color: white;
@@ -151,10 +199,43 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            transition: border-color 0.3s;
+        }
+        
+        .footer a:hover {
+            border-bottom-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 15px 30px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="back-nav">
+        <a href="index.html" class="back-button">Back to Portfolio</a>
+    </div>
+    
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -381,7 +462,7 @@ ORDER BY win_pct DESC
             <p><strong>Data Sources:</strong> Team statistics scraped from Basketball-Reference.com for NBA champions from 2020-2024.</p>
             <p><strong>Database:</strong> SQLite database with normalized schema (championship_teams table) containing 14 key performance metrics per team.</p>
             <p><strong>SQL Techniques Used:</strong></p>
-            <ul style="margin-left: 30px; margin-top: 10px;">
+            <ul>
                 <li>Window functions (RANK() OVER) for comparative rankings</li>
                 <li>CASE statements for categorical classification</li>
                 <li>Aggregate functions and calculated metrics (win percentage, ratios)</li>
@@ -392,8 +473,8 @@ ORDER BY win_pct DESC
         
         <!-- Footer -->
         <div class="footer">
-            <p>Created by <a href="../index.html">Jack Noble</a> | SQL Portfolio Project</p>
-            <p>View on <a href="https://github.com/Jnoble555">GitHub</a></p>
+            <p>Created by <a href="index.html">Jack Noble</a> | SQL Portfolio Project</p>
+            <p style="margin-top: 10px;">View code on <a href="https://github.com/Jnoble555/personal-website/tree/main/celtics-project" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </div>
     </div>
 </body>

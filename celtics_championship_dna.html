@@ -16,12 +16,6 @@
     </script>
     <!-- End Google Analytics -->
 
-    <!--
-        STEP 1: Load Plotly from a CDN.
-        This one line gives us access to the entire Plotly charting library.
-        "CDN" just means it's hosted on a public server — no install needed.
-        The browser downloads it automatically when someone visits the page.
-    -->
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
     <style>
@@ -30,21 +24,21 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #007A33 0%, #BA9653 100%);
             color: #333;
             line-height: 1.6;
         }
-        
+
         .back-nav {
             position: absolute;
             top: 20px;
             left: 20px;
             z-index: 1000;
         }
-        
+
         .back-button {
             background: white;
             color: #007A33;
@@ -59,24 +53,24 @@
             gap: 8px;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        
+
         .back-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
-        
+
         .back-button::before {
             content: '←';
             font-size: 16px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 80px 20px 40px;
             position: relative;
         }
-        
+
         .header {
             background: white;
             border-radius: 16px;
@@ -84,25 +78,25 @@
             margin-bottom: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        
+
         .header h1 {
             font-size: 2.5rem;
             color: #007A33;
             margin-bottom: 10px;
         }
-        
+
         .header p {
             font-size: 1.1rem;
             color: #666;
         }
-        
+
         .key-metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 30px;
         }
-        
+
         .metric-card {
             background: linear-gradient(135deg, #007A33 0%, #00A651 100%);
             color: white;
@@ -110,18 +104,18 @@
             border-radius: 12px;
             text-align: center;
         }
-        
+
         .metric-value {
             font-size: 2rem;
             font-weight: bold;
             margin-bottom: 5px;
         }
-        
+
         .metric-label {
             font-size: 0.9rem;
             opacity: 0.9;
         }
-        
+
         .section {
             background: white;
             border-radius: 16px;
@@ -129,40 +123,40 @@
             margin-bottom: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        
+
         .section h2 {
             color: #007A33;
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        
+
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #e5e7eb;
         }
-        
+
         th {
             background: #f8f9fa;
             font-weight: 600;
             color: #007A33;
         }
-        
+
         tr:hover {
             background: #f8f9fa;
         }
-        
+
         .highlight {
             background: #e8f5e9 !important;
             font-weight: bold;
         }
-        
+
         .insight {
             background: #e8f5e9;
             border-left: 4px solid #007A33;
@@ -170,11 +164,11 @@
             margin: 20px 0;
             border-radius: 8px;
         }
-        
+
         .insight strong {
             color: #007A33;
         }
-        
+
         .sql-code {
             background: #f5f5f5;
             padding: 15px;
@@ -185,12 +179,6 @@
             font-size: 0.9rem;
         }
 
-        /*
-            STEP 2: Style the chart containers.
-            These divs are just empty placeholders right now.
-            Plotly will inject the actual SVG chart inside them at runtime.
-            We give them a min-height so the page doesn't jump around while loading.
-        */
         .chart-container {
             margin: 24px 0;
             min-height: 380px;
@@ -229,7 +217,7 @@
             border-color: #007A33;
             color: white;
         }
-        
+
         .methodology {
             background: white;
             border-radius: 16px;
@@ -237,28 +225,28 @@
             margin-top: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        
+
         .methodology h2 {
             color: #007A33;
             margin-bottom: 15px;
         }
-        
+
         .methodology ul {
             margin-left: 30px;
             margin-top: 10px;
         }
-        
+
         .methodology li {
             margin-bottom: 8px;
         }
-        
+
         .footer {
             text-align: center;
             color: white;
             padding: 20px;
             margin-top: 40px;
         }
-        
+
         .footer a {
             color: white;
             text-decoration: none;
@@ -266,29 +254,29 @@
             border-bottom: 2px solid rgba(255,255,255,0.3);
             transition: border-color 0.3s;
         }
-        
+
         .footer a:hover {
             border-bottom-color: white;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 60px 15px 30px;
             }
-            
+
             .header h1 {
                 font-size: 1.8rem;
             }
-            
+
             .back-button {
                 padding: 10px 16px;
                 font-size: 13px;
             }
-            
+
             table {
                 font-size: 14px;
             }
-            
+
             th, td {
                 padding: 8px;
             }
@@ -299,13 +287,13 @@
     <div class="back-nav">
         <a href="index.html" class="back-button">Back to Portfolio</a>
     </div>
-    
+
     <div class="container">
         <!-- Header -->
         <div class="header">
             <h1>🏆 Celtics Championship DNA</h1>
             <p>SQL Analysis: How the 2024 Celtics Compare to Recent NBA Champions</p>
-            
+
             <div class="key-metrics">
                 <div class="metric-card">
                     <div class="metric-value">#1</div>
@@ -325,11 +313,11 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Analysis 1 -->
         <div class="section">
             <h2>📊 Championship Dominance Ranking</h2>
-            
+
             <div class="sql-code">
 SELECT team_name, year, wins, losses,<br>
 &nbsp;&nbsp;ROUND(win_pct * 100, 1) as win_pct,<br>
@@ -338,14 +326,8 @@ FROM championship_teams<br>
 ORDER BY win_pct DESC
             </div>
 
-            <!--
-                STEP 2 (continued): The chart placeholder div.
-                The id="dominanceChart" is how Plotly knows WHERE to draw.
-                You'll see this id referenced in the JavaScript below.
-                That's the only connection between HTML and JS — just a matching id.
-            -->
             <div id="dominanceChart" class="chart-container"></div>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -400,17 +382,16 @@ ORDER BY win_pct DESC
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="insight">
                 <strong>Key Insight:</strong> The 2024 Celtics posted the best regular season record among recent champions with a 78.0% win rate, winning 64 games. This 14-game improvement over the 2020 Lakers (2nd place) demonstrates exceptional dominance throughout the season.
             </div>
         </div>
-        
+
         <!-- Analysis 2 -->
         <div class="section">
             <h2>⚡ Offensive Firepower</h2>
 
-            <!-- Toggle buttons — clicking one calls showOffenseStat() with that stat's key -->
             <div class="chart-toggle-row">
                 <button class="chart-toggle active" onclick="showOffenseStat('ppg', this)">Points Per Game</button>
                 <button class="chart-toggle" onclick="showOffenseStat('fg', this)">Field Goal %</button>
@@ -418,9 +399,8 @@ ORDER BY win_pct DESC
                 <button class="chart-toggle" onclick="showOffenseStat('apg', this)">Assists Per Game</button>
             </div>
 
-            <!-- Same single div — Plotly redraws here each time a button is clicked -->
             <div id="offenseChart" class="chart-container"></div>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -475,19 +455,18 @@ ORDER BY win_pct DESC
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="insight">
                 <strong>Key Insight:</strong> The Celtics led all recent champions in scoring at 120.6 PPG, combining elite three-point shooting (38.8%) with balanced offense. Their 26.9 assists per game shows team-oriented play.
             </div>
         </div>
-        
+
         <!-- Analysis 3 -->
         <div class="section">
             <h2>🎯 Ball Movement & Security</h2>
 
-            <!-- Chart placeholder for the AST/TO ratio chart -->
             <div id="ballMovementChart" class="chart-container"></div>
-            
+
             <table>
                 <thead>
                     <tr>
@@ -536,12 +515,12 @@ ORDER BY win_pct DESC
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="insight">
                 <strong>Key Insight:</strong> The Celtics' 2.26 assist-to-turnover ratio was the best among recent champions, indicating superior ball control and smart decision-making. They generated assists while minimizing mistakes.
             </div>
         </div>
-        
+
         <!-- Methodology -->
         <div class="methodology">
             <h2>📋 Methodology</h2>
@@ -556,7 +535,7 @@ ORDER BY win_pct DESC
             </ul>
             <p style="margin-top: 15px;"><strong>Key Finding:</strong> The 2024 Celtics rank #1 across multiple dimensions: highest win percentage (78.0%), most points per game (120.6), and best composite championship score (88.6), establishing them as the most dominant recent NBA champion.</p>
         </div>
-        
+
         <!-- Footer -->
         <div class="footer">
             <p>Created by <a href="index.html">Jack Noble</a> | SQL Portfolio Project</p>
@@ -564,47 +543,94 @@ ORDER BY win_pct DESC
         </div>
     </div>
 
-    <!--
-        STEP 3: The JavaScript that actually draws the charts.
-
-        This whole block runs after the page loads (DOMContentLoaded).
-        That matters because Plotly needs the div elements to already exist
-        in the page before it can draw into them.
-
-        Each chart follows the same pattern:
-          1. Define your data as a JavaScript object ("trace")
-          2. Define layout options (title, axis labels, colors)
-          3. Call Plotly.newPlot(divId, [trace], layout, config)
-
-        That's it. You never touch SVG or canvas — Plotly handles all of that.
-    -->
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    // These must be in global scope so onclick handlers on the buttons can call showOffenseStat
+    const offenseTeams = ['2022 Warriors', '2020 Lakers', '2023 Nuggets', '2021 Bucks', '2024 Celtics'];
+    const offenseColors = ['#b0bec5', '#b0bec5', '#b0bec5', '#b0bec5', '#007A33'];
 
-        // ─────────────────────────────────────────────
-        // CHART 1: Win Percentage Bar Chart
-        // This is a horizontal bar chart showing each team's win %.
-        // The Celtics bar is highlighted in Celtics green;
-        // all others are a muted grey so the eye goes straight to #1.
-        // ─────────────────────────────────────────────
+    const offenseStats = {
+        ppg: {
+            label: 'Points Per Game',
+            values: [111.0, 113.4, 115.8, 120.1, 120.6],
+            axisTitle: 'Points Per Game',
+            range: [105, 125],
+            ticksuffix: ''
+        },
+        fg: {
+            label: 'Field Goal %',
+            values: [46.9, 48.0, 50.4, 48.7, 48.7],
+            axisTitle: 'Field Goal %',
+            range: [44, 53],
+            ticksuffix: '%'
+        },
+        '3p': {
+            label: '3-Point %',
+            values: [36.4, 34.9, 37.9, 38.9, 38.8],
+            axisTitle: '3-Point %',
+            range: [32, 41],
+            ticksuffix: '%'
+        },
+        apg: {
+            label: 'Assists Per Game',
+            values: [27.1, 25.4, 28.9, 25.5, 26.9],
+            axisTitle: 'Assists Per Game',
+            range: [22, 32],
+            ticksuffix: ''
+        }
+    };
+
+    function showOffenseStat(key, btn) {
+        const stat = offenseStats[key];
+
+        const trace = {
+            type: 'bar',
+            x: offenseTeams,
+            y: stat.values,
+            marker: { color: offenseColors },
+            text: stat.values.map(v => stat.ticksuffix ? v + stat.ticksuffix : v),
+            textposition: 'outside',
+            hovertemplate: '%{x}: %{y}' + stat.ticksuffix + '<extra></extra>'
+        };
+
+        const layout = {
+            title: { text: stat.label, font: { size: 16, color: '#333' } },
+            xaxis: { automargin: true },
+            yaxis: {
+                title: stat.axisTitle,
+                range: stat.range,
+                ticksuffix: stat.ticksuffix,
+                gridcolor: '#f0f0f0'
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            margin: { t: 50, r: 40, b: 80, l: 70 },
+            height: 360
+        };
+
+        Plotly.react('offenseChart', [trace], layout, { responsive: true, displayModeBar: false });
+
+        if (btn) {
+            document.querySelectorAll('.chart-toggle').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
 
         const teams = ['2021 Bucks', '2022 Warriors', '2023 Nuggets', '2020 Lakers', '2024 Celtics'];
         const winPcts = [63.9, 64.6, 64.6, 73.2, 78.0];
-
-        // Colors array: one color per bar.
-        // The last entry (Celtics) gets the brand green; the rest get grey.
         const dominanceColors = ['#b0bec5', '#b0bec5', '#b0bec5', '#b0bec5', '#007A33'];
 
         const dominanceTrace = {
             type: 'bar',
-            orientation: 'h',          // 'h' = horizontal bars
-            x: winPcts,                // x axis = the numbers (win %)
-            y: teams,                  // y axis = the team names
+            orientation: 'h',
+            x: winPcts,
+            y: teams,
             marker: {
                 color: dominanceColors,
                 line: { width: 0 }
             },
-            text: winPcts.map(v => v + '%'),   // label shown on each bar
+            text: winPcts.map(v => v + '%'),
             textposition: 'outside',
             hovertemplate: '%{y}: %{x}%<extra></extra>'
         };
@@ -616,7 +642,7 @@ ORDER BY win_pct DESC
             },
             xaxis: {
                 title: 'Win Percentage',
-                range: [55, 85],       // start at 55 so differences are visible
+                range: [55, 85],
                 ticksuffix: '%',
                 gridcolor: '#f0f0f0'
             },
@@ -627,106 +653,9 @@ ORDER BY win_pct DESC
             height: 320
         };
 
-        // newPlot takes: (divId, arrayOfTraces, layout, config)
         Plotly.newPlot('dominanceChart', [dominanceTrace], dominanceLayout, { responsive: true, displayModeBar: false });
 
-
-        // ─────────────────────────────────────────────
-        // CHART 2: Togglable Offensive Stats
-        //
-        // All the data lives in one object keyed by stat name.
-        // showOffenseStat(key) looks up that key, builds a trace,
-        // and calls Plotly.react() — which redraws the existing chart
-        // in place rather than creating a new one from scratch.
-        // Plotly.react() is faster than newPlot() for updates because
-        // it diffs the old and new data and only changes what's different.
-        // ─────────────────────────────────────────────
-
-        const offenseTeams = ['2022 Warriors', '2020 Lakers', '2023 Nuggets', '2021 Bucks', '2024 Celtics'];
-
-        // Each stat has: a display label, the y values, the axis title, and a y-axis range.
-        // To add a new stat later, you just add one more entry here — nothing else changes.
-        const offenseStats = {
-            ppg: {
-                label: 'Points Per Game',
-                values: [111.0, 113.4, 115.8, 120.1, 120.6],
-                axisTitle: 'Points Per Game',
-                range: [105, 125],
-                ticksuffix: ''
-            },
-            fg: {
-                label: 'Field Goal %',
-                values: [46.9, 48.0, 50.4, 48.7, 48.7],
-                axisTitle: 'Field Goal %',
-                range: [44, 53],
-                ticksuffix: '%'
-            },
-            '3p': {
-                label: '3-Point %',
-                values: [36.4, 34.9, 37.9, 38.9, 38.8],
-                axisTitle: '3-Point %',
-                range: [32, 41],
-                ticksuffix: '%'
-            },
-            apg: {
-                label: 'Assists Per Game',
-                values: [27.1, 25.4, 28.9, 25.5, 26.9],
-                axisTitle: 'Assists Per Game',
-                range: [22, 32],
-                ticksuffix: ''
-            }
-        };
-
-        // Colors: Celtics (last bar) always green, rest grey
-        const offenseColors = ['#b0bec5', '#b0bec5', '#b0bec5', '#b0bec5', '#007A33'];
-
-        function showOffenseStat(key, btn) {
-            const stat = offenseStats[key];
-
-            const trace = {
-                type: 'bar',
-                x: offenseTeams,
-                y: stat.values,
-                marker: { color: offenseColors },
-                text: stat.values.map(v => stat.ticksuffix ? v + stat.ticksuffix : v),
-                textposition: 'outside',
-                hovertemplate: '%{x}: %{y}' + stat.ticksuffix + '<extra></extra>'
-            };
-
-            const layout = {
-                title: { text: stat.label, font: { size: 16, color: '#333' } },
-                xaxis: { automargin: true },
-                yaxis: {
-                    title: stat.axisTitle,
-                    range: stat.range,
-                    ticksuffix: stat.ticksuffix,
-                    gridcolor: '#f0f0f0'
-                },
-                plot_bgcolor: '#ffffff',
-                paper_bgcolor: '#ffffff',
-                margin: { t: 50, r: 40, b: 80, l: 70 },
-                height: 360
-            };
-
-            Plotly.react('offenseChart', [trace], layout, { responsive: true, displayModeBar: false });
-
-            // btn is null on the initial page load call, so guard against that
-            if (btn) {
-                document.querySelectorAll('.chart-toggle').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
-        }
-
-        // Draw PPG by default on page load — no button to highlight so pass null
         showOffenseStat('ppg', null);
-
-
-        // ─────────────────────────────────────────────
-        // CHART 3: AST/TO Ratio — Scatter + Bar Hybrid
-        // A simple horizontal bar showing the assist-to-turnover ratio.
-        // The higher the number, the better the ball security.
-        // Celtics green highlights the leader again.
-        // ─────────────────────────────────────────────
 
         const bmTeams = ['2020 Lakers', '2022 Warriors', '2021 Bucks', '2023 Nuggets', '2024 Celtics'];
         const astToRatios = [1.67, 1.82, 1.85, 1.99, 2.26];

@@ -1,0 +1,8 @@
+*.zip
+*.gpx
+*.fit
+dashboard.html
+log.csv
+plan.csv
+!examples/plan.csv
+__pycache__/

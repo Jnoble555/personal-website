@@ -1,0 +1,7 @@
+Activity ID,Activity Date,Activity Type,Distance,Elapsed Time,Distance,Elapsed Time
+demo-001,"Oct 01, 2025, 07:00:00 AM",Run,4.0 mi,43 min,6437.376,2580
+demo-002,"Oct 03, 2025, 12:30:00 AM",Run,5.0 mi,56 min,8046.72,3360
+demo-003,"Oct 08, 2025, 06:00:00 PM",Ride,12.0 mi,52 min,19312.128,3120
+demo-004,"Oct 15, 2025, 07:15:00 AM",Run,8.0 mi,1h 27m,12874.752,5220
+demo-005,"Nov 05, 2025, 06:30:00 AM",Run,12.0 mi,2h 12m,19312.128,7920
+demo-006,"Nov 22, 2025, 07:00:00 AM",Run,50.0 mi,9h 20m,80467.2,33600

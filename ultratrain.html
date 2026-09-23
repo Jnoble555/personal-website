@@ -28,6 +28,10 @@
       <p class="ultra-kicker">The 2025 baseline</p>
       <dl class="ultra-stats"><div><dt>Pre-race training runs</dt><dd>35</dd></div><div><dt>Training volume</dt><dd>295 <small>mi</small></dd></div><div><dt>Race elapsed time</dt><dd>8h 43m</dd></div></dl>
     </div></section>
+    <figure class="ultra-showcase"><div class="wrap">
+      <img src="assets/ultratrain-dashboard-excerpt.png" width="1440" height="900" loading="lazy" decoding="async" alt="Annotated UltraTrain dashboard excerpt showing 35 pre-race runs, 295 training miles, weekly volume including zero-mile weeks, and approximate ten-mile race splits. Notes explain that race day is excluded from training volume and elapsed pace includes stops.">
+      <figcaption>Selected dashboard panels reconstructed from aggregate 2025 results for this public case study. Routes, activity IDs, and personal notes are omitted.</figcaption>
+    </div></figure>
     <section class="ultra-section ultra-question" aria-labelledby="question-title"><div class="wrap">
       <p class="eyebrow">01 / The question</p><h2 id="question-title">A result is not an explanation.</h2>
       <p>The 50-mile finish gave me a result, but it did not explain how my training varied or which patterns deserved attention. I built a local tool to separate training from race day, summarize weekly volume, approximate elapsed pacing, and compare future planned workouts with recorded activity.</p>
@@ -67,7 +71,8 @@
     <section class="ultra-section ultra-product" aria-labelledby="product-title"><div class="wrap">
       <p class="eyebrow">04 / The product</p><h2 id="product-title">From export to a useful review.</h2>
       <p>UltraTrain reads my requested account export locally, checks and summarizes activities, and generates a static dashboard. It does not send the underlying workout data to a server.</p>
-      <ol class="ultra-flow"><li><span>01</span><h3>Strava export</h3><p>Activity summaries and a detailed race track.</p></li><li><span>02</span><h3>Python pipeline</h3><p>Filter runs, separate race day, calculate weekly volume and splits.</p></li><li><span>03</span><h3>Private dashboard</h3><p>Review the baseline and compare a plan with recorded training.</p></li></ol>
+        <ol class="ultra-flow"><li><span>01</span><h3>Strava export</h3><p>Activity summaries and a detailed race track.</p></li><li><span>02</span><h3>Python pipeline</h3><p>Filter runs, separate race day, calculate weekly volume and splits.</p></li><li><span>03</span><h3>Private dashboard</h3><p>Review the baseline and compare a plan with recorded training.</p></li></ol>
+        <p class="ultra-code-link"><a href="https://github.com/Jnoble555/personal-website/tree/main/projects/ultratrain" target="_blank" rel="noopener noreferrer">Explore the public code sample <span aria-hidden="true">↗</span></a><span>Runnable with synthetic data; the private export and dashboard are not included.</span></p>
     </div></section>
     <section class="ultra-section ultra-decisions" aria-labelledby="decisions-title"><div class="wrap">
       <p class="eyebrow">05 / Design decisions</p><h2 id="decisions-title">The honest boundaries are part of the product.</h2>

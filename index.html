@@ -1,559 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack Noble | Data Analytics Portfolio</title>
-    <meta name="description" content="Jack Noble — Fordham Information Systems student focused on data analytics and database systems. Portfolio of SQL, Python, and data visualization projects.">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HXVRPC9HS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7HXVRPC9HS');
-    </script>
-    <!-- End Google Analytics -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: #f0f9ff;
-            color: #0c4a6e;
-        }
-        
-        /* Nav */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 24px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #e0f2fe;
-        }
-        
-        .logo {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #0c4a6e;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #0c4a6e;
-        }
-        
-        .nav-cta {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-            color: white !important;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-        }
-        
-        .nav-cta:hover {
-            background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
-        }
-        
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 48px;
-            position: relative;
-            overflow: hidden;
-            padding-top: 100px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .hero-content {
-            max-width: 1000px;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .eyebrow {
-            font-family: 'Space Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #0ea5e9;
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-        }
-        
-        h1 {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
-        }
-        
-        .subtitle {
-            font-size: clamp(18px, 3vw, 24px);
-            line-height: 1.6;
-            color: #475569;
-            max-width: 800px;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-        
-        .highlight {
-            color: #0ea5e9;
-            font-weight: 700;
-        }
-        
-        .cta-group {
-            display: flex;
-            gap: 16px;
-            animation: fadeInUp 1s ease-out 0.5s backwards;
-        }
-        
-        .cta-primary {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-            color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(14, 165, 233, 0.35);
-        }
-        
-        .cta-secondary {
-            background: white;
-            color: #0c4a6e;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            border: 2px solid #e0f2fe;
-            transition: background 0.3s, border-color 0.3s;
-        }
-        
-        .cta-secondary:hover {
-            background: #f0f9ff;
-            border-color: #bae6fd;
-        }
-        
-        /* Projects Section */
-        .projects-section {
-            padding: 120px 48px;
-            background: white;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-        
-        .section-eyebrow {
-            font-family: 'Space Mono', monospace;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #0ea5e9;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-        
-        .section-title {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 900;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .projects-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-        
-        .project-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 16px;
-            padding: 32px;
-            border: 1px solid #bae6fd;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
-        }
-
-        /* Coming soon card variant */
-        .project-card.coming-soon {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border: 1px solid #e2e8f0;
-            opacity: 0.85;
-        }
-
-        .project-card.coming-soon::before {
-            background: linear-gradient(90deg, #94a3b8 0%, #cbd5e1 100%);
-        }
-
-        .project-card.coming-soon:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
-        }
-
-        .project-card.coming-soon h3 {
-            color: #475569;
-        }
-
-        .project-card.coming-soon p {
-            color: #64748b;
-        }
-        
-        .project-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #0c4a6e;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-        
-        .project-card p {
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-        
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .pill {
-            background: rgba(14, 165, 233, 0.1);
-            color: #0369a1;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-        }
-
-        .pill.muted {
-            background: rgba(148, 163, 184, 0.1);
-            color: #64748b;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-        }
-        
-        .coming-soon-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(148, 163, 184, 0.12);
-            color: #64748b;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .coming-soon-pill::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #94a3b8;
-            display: inline-block;
-        }
-        
-        .project-link {
-            color: #0ea5e9;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: gap 0.3s;
-        }
-        
-        .project-link:hover {
-            gap: 8px;
-        }
-        
-        .project-link::after {
-            content: '→';
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            padding: 120px 48px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .contact-section p {
-            font-size: 18px;
-            line-height: 2;
-            color: #475569;
-            margin-top: 32px;
-        }
-        
-        .contact-section a {
-            color: #0ea5e9;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .contact-section a:hover {
-            color: #0284c7;
-            text-decoration: underline;
-        }
-        
-        /* Footer */
-        footer {
-            background: white;
-            padding: 40px 48px;
-            text-align: center;
-            color: #64748b;
-            font-size: 14px;
-            border-top: 1px solid #e0f2fe;
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                padding: 20px 24px;
-                flex-direction: column;
-                gap: 16px;
-            }
-            
-            .nav-links {
-                gap: 16px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero {
-                padding: 0 24px;
-            }
-            
-            .projects-section,
-            .contact-section {
-                padding: 80px 24px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-group {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Jack Noble builds useful products and analyses across data, product, and AI.">
+  <title>Jack Noble — Product, Data & AI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">Jack Noble</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-cta">Resume</a>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a>
+    <nav aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
-    
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <div class="eyebrow">Data Analyst • NYC</div>
-            <h1>Hi, I'm Jack</h1>
-            <p class="subtitle">
-                I'm currently a junior at Fordham University studying Information Systems. I'm focused on <span class="highlight">data analytics</span> and <span class="highlight">product development</span>. I build clean, decision-ready analyses using Python, SQL, and visualization tools.
-            </p>
-            <div class="cta-group">
-                <a href="#projects" class="cta-primary">View Projects</a>
-                <a href="#contact" class="cta-secondary">Get in Touch</a>
-            </div>
+    <a class="header-link" href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> JACK NOBLE · NEW YORK</p>
+        <h1 id="hero-title">Making complex things <em>useful.</em></h1>
+        <p class="hero-intro">I work across product, data, and AI to turn open-ended questions into clear decisions and thoughtful tools. I'm studying Information Systems at Fordham University.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="mailto:jnoble12@fordham.edu">Start a conversation <span aria-hidden="true">↗</span></a>
         </div>
+      </div>
+      <div class="hero-graphic" role="img" aria-label="Abstract grid showing data points becoming a clear upward path">
+        <div class="graphic-label">FROM SIGNAL TO DECISION <span>01 / 03</span></div>
+        <svg viewBox="0 0 520 410" aria-hidden="true" focusable="false">
+          <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d1d5c7" stroke-width="1"/></pattern></defs>
+          <rect width="520" height="410" fill="url(#grid)"/>
+          <path d="M30 318 C105 305 130 330 180 264 S260 263 320 195 S395 182 490 82" fill="none" stroke="#c15d37" stroke-width="5" stroke-linecap="round"/>
+          <path d="M30 318 C105 305 130 330 180 264 S260 263 320 195 S395 182 490 82 L490 410 L30 410Z" fill="#c15d37" opacity=".08"/>
+          <g fill="#f5f3ed" stroke="#c15d37" stroke-width="4"><circle cx="30" cy="318" r="6"/><circle cx="180" cy="264" r="6"/><circle cx="320" cy="195" r="6"/><circle cx="490" cy="82" r="8"/></g>
+          <g fill="#a5afa0"><circle cx="85" cy="108" r="3"/><circle cx="116" cy="194" r="3"/><circle cx="256" cy="120" r="3"/><circle cx="390" cy="286" r="3"/><circle cx="450" cy="216" r="3"/></g>
+        </svg>
+        <div class="graphic-footer"><span>QUESTION → EVIDENCE → PRODUCT</span><span class="graphic-arrow" aria-hidden="true">↗</span></div>
+      </div>
     </section>
-    
-    <section class="projects-section" id="projects">
-        <div class="section-header">
-            <div class="section-eyebrow">Portfolio</div>
-            <h2 class="section-title">Projects</h2>
-        </div>
-        
-        <div class="projects-grid">
 
-            <!-- Project 1: Strava -->
-            <article class="project-card">
-                <h3>Running Performance Analytics Dashboard</h3>
-                <p>
-                    Built an interactive dashboard analyzing 346 miles of running data via Strava API. 
-                    Identified 5x volume growth over 5 months and optimal training patterns using 
-                    Python data analysis and Plotly visualizations.
-                </p>
-                <div class="pill-row">
-                    <span class="pill">Python</span>
-                    <span class="pill">Strava API</span>
-                    <span class="pill">Plotly</span>
-                </div>
-                <a class="project-link" href="strava-analytics.html">View dashboard</a>
-            </article>
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="work-title">Built with purpose.</h2></div><p>Two projects that show how I frame a question, work with real data, and present the result.</p></div>
 
-            <!-- Project 2: Celtics -->
-            <article class="project-card">
-                <h3>Celtics Championship DNA: SQL Analysis</h3>
-                <p>
-                    Built a relational database analyzing how the 2024 Celtics championship team 
-                    compares to recent NBA champions. Used advanced SQL (window functions, CTEs) 
-                    to identify what separates elite champions from contenders.
-                </p>
-                <div class="pill-row">
-                    <span class="pill">SQL</span>
-                    <span class="pill">SQLite</span>
-                    <span class="pill">Data Analysis</span>
-                </div>
-                <a class="project-link" href="celtics_championship_dna.html">View analysis</a>
-            </article>
+        <article class="feature-card">
+          <div class="feature-visual ultra-visual" aria-hidden="true">
+            <div class="visual-top"><span>ULTRATRAIN</span><span>50 → 100</span></div>
+            <div class="visual-center"><span class="visual-number">295</span><span class="visual-unit">training miles before the first 50</span></div>
+            <div class="visual-lines"><i style="height:19%"></i><i style="height:2%"></i><i style="height:10%"></i><i style="height:63%"></i><i style="height:50%"></i><i style="height:58%"></i><i style="height:89%"></i><i style="height:77%"></i><i style="height:82%"></i><i style="height:89%"></i><i style="height:100%"></i><i style="height:2%"></i><i style="height:29%"></i><i style="height:76%"></i><i style="height:58%"></i><i style="height:48%"></i><i style="height:53%"></i><i style="height:48%"></i><i style="height:2%"></i></div>
+            <div class="visual-bottom"><span>THE 2025 BASELINE</span><span>UMSTEAD 2027 ↗</span></div>
+          </div>
+          <div class="feature-content">
+            <div class="project-index">01 <span class="project-status">Active project</span></div>
+            <h3>From 50 miles to 100.</h3>
+            <p>A personal training tool that reconstructs my first 50-mile build and follows the next one toward Umstead. It connects planned workouts with recorded runs and keeps the conclusions grounded in what the data can actually show.</p>
+            <div class="meta-row"><span>Python</span><span>Data analysis</span><span>Product design</span></div>
+            <a class="project-link" href="ultratrain.html">Explore the case study <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
 
-            <!-- Project 3: NYC Opportunity Index — Coming Soon -->
-            <article class="project-card coming-soon">
-                <h3>NYC Neighborhood Opportunity Index</h3>
-                <p>
-                    Building a neighborhood ranking model using public NYC and Census data to compare 
-                    areas on affordability, safety, and transit access — packaged into a single, 
-                    transparent scoring framework.
-                </p>
-                <div class="pill-row">
-                    <span class="pill muted">Python</span>
-                    <span class="pill muted">Pandas</span>
-                    <span class="pill muted">Data Analysis</span>
-                </div>
-                <span class="coming-soon-pill">Coming Soon</span>
-            </article>
-
-        </div>
+        <article class="feature-card reverse">
+          <div class="feature-visual celtics-visual" aria-hidden="true">
+            <div class="visual-top"><span>CHAMPIONSHIP DNA</span><span>2020—2024</span></div>
+            <div class="court-ring ring-one"></div><div class="court-ring ring-two"></div>
+            <div class="visual-center celtics-center"><span class="visual-number">05</span><span class="visual-unit">championship teams compared</span></div>
+            <div class="visual-bottom"><span>SQL / SQLITE</span><span>ANALYZE ↗</span></div>
+          </div>
+          <div class="feature-content">
+            <div class="project-index">02 <span class="project-status neutral">Completed analysis</span></div>
+            <h3>A closer look at championship teams.</h3>
+            <p>A SQL analysis comparing the 2024 Celtics with four recent NBA champions. I organized team statistics into a database and used queries to examine offense, ball movement, and regular-season performance.</p>
+            <div class="meta-row"><span>SQL</span><span>SQLite</span><span>Sports analytics</span></div>
+            <a class="project-link" href="celtics.html">Explore the case study <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
     </section>
-    
-    <section class="contact-section" id="contact">
-        <div class="contact-content">
-            <div class="section-header">
-                <div class="section-eyebrow">Get in Touch</div>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            <p>
-                Email: <a href="mailto:jnoble12@fordham.edu">jnoble12@fordham.edu</a><br>
-                LinkedIn: <a href="https://www.linkedin.com/in/john-noble5/" target="_blank" rel="noopener noreferrer">linkedin.com/in/john-noble5</a><br>
-            </p>
-        </div>
+
+    <section class="experience-section wrap" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / EXPERIENCE</p><h2 id="experience-title">Work beyond the portfolio.</h2></div><p>Roles where I've worked with people, systems, and product decisions.</p></div>
+      <div class="experience-list">
+        <div class="experience-item"><span class="experience-year">2025—NOW</span><div><h3>Information Services Manager</h3><p>Fordham University</p></div><p>Operational data, reporting systems, and support for campus programs.</p></div>
+        <div class="experience-item"><span class="experience-year">SUMMER 2026</span><div><h3>Product Development Intern</h3><p>FactSet</p></div><p>Built an automated exchange-change notification platform using Jira data and reusable reporting tools.</p></div>
+        <div class="experience-item"><span class="experience-year">2025</span><div><h3>AI Product Management Intern</h3><p>Fordham Gabelli Gen-AI Incubator</p></div><p>Product requirements, platform evaluation, and research for generative AI concepts.</p></div>
+        <div class="experience-item"><span class="experience-year">2025</span><div><h3>Information Technology Intern</h3><p>Tri-Vin Wines and Spirits</p></div><p>Systems support and workflow improvements across business teams.</p></div>
+      </div>
     </section>
-    
-    <footer>
-        <p>© 2026 Jack Noble</p>
-    </footer>
+
+    <section class="about-section" id="about" aria-labelledby="about-title"><div class="wrap about-grid"><div><p class="eyebrow">03 / ABOUT</p><h2 id="about-title">Curiosity with a practical edge.</h2></div><div><p>I'm a Fordham Information Systems student who enjoys the space between the question and the finished product: understanding the problem, finding usable evidence, and making the result clear to someone else.</p><p>Outside of school and work, I'm training for my first 100-mile ultramarathon. It's become a long-running exercise in measurement, judgment, and adjusting the plan when reality changes.</p><div class="toolkit"><span>PYTHON</span><span>SQL</span><span>DATA VISUALIZATION</span><span>PRODUCT THINKING</span></div></div></div></section>
+
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><p class="eyebrow">04 / CONTACT</p><div class="contact-grid"><h2 id="contact-title">Have a question worth <em>working on?</em></h2><div><p>I'm always interested in thoughtful product and data work. Tell me what you're building.</p><a class="button button-light" href="mailto:jnoble12@fordham.edu">Get in touch <span aria-hidden="true">↗</span></a></div></div></section>
+  </main>
+
+  <footer class="site-footer wrap"><span>© 2026 Jack Noble</span><div><a href="mailto:jnoble12@fordham.edu">Email</a><a href="https://www.linkedin.com/in/john-noble5/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a></div></footer>
 </body>
 </html>

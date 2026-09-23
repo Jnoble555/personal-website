@@ -1,21 +1,84 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="UltraTrain: building a personal training tool from a 50-mile race toward a first 100-miler."><title>UltraTrain — Jack Noble</title><link rel="stylesheet" href="styles.css"></head>
-<body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UltraTrain: a private Python training dashboard built from a 50-mile race toward a first 100-miler.">
+  <title>UltraTrain — Jack Noble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Literata:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="ultra-page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap"><a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a><nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav><a class="header-link" href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a></header>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a>
+    <nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+    <a class="header-link" href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+  </header>
   <main id="main">
-    <section class="page-hero wrap"><p class="eyebrow">CASE STUDY 01 · ACTIVE PROJECT</p><h1>From 50 miles to 100.</h1><p>How can a personal training tool help me learn from one ultramarathon build while preparing for the next? UltraTrain starts with a factual baseline and follows the 28-week build toward the 2027 Umstead 100.</p><div class="meta-row"><span>Python</span><span>Data analysis</span><span>Product design</span><span>2026–2027</span></div></section>
-    <div class="case-body wrap"><aside class="case-nav">ULTRATRAIN<br>01 / THE QUESTION<br>02 / THE EVIDENCE<br>03 / THE TOOL<br>04 / NEXT</aside><article class="case-content">
-      <h2>The question</h2><p>My first 50-mile race gave me a result, but little structure for explaining what happened or deciding what to watch as I train for twice the distance. I wanted a tool that puts the completed training, race pacing, and upcoming plan in one place without presenting uncertain predictions as facts.</p>
-      <h2>The evidence</h2><p>I reconstructed the 2025 training block from my account export and separated training from race day. The longest training run was much shorter than the event, which is an interesting fact about the build, not a rule for planning the next race.</p>
-      <div class="number-row"><div class="number-cell"><strong>35</strong><span>Pre-race training runs</span></div><div class="number-cell"><strong>295</strong><span>Training miles</span></div><div class="number-cell"><strong>51.2</strong><span>Race-day miles recorded</span></div></div>
-      <p>The export also includes a detailed race track. Its timing and distance closely agree with the activity summary, so I can show approximate elapsed pacing by 10-mile section. No heart-rate samples or consistent effort notes are available; pace cannot tell the full story of fatigue or conditions.</p>
-      <h2>The tool</h2><p>The first version generates a private dashboard from an account export. It shows weekly running volume, a 50-mile pacing breakdown, the 28-week Umstead plan, and planned versus recorded mileage. It also catches ambiguous date matches, such as a run recorded shortly after midnight.</p>
-      <div class="aside-note">The training dashboard is private. The public case study uses aggregate figures and excludes route coordinates, activity IDs, and personal notes.</div>
-      <h2>What comes next</h2><p>The project will grow alongside the actual training: short notes on effort, fueling, and recovery can explain details that GPS data misses. After the race, I can compare what I expected at each stage with what actually happened. A separate study of historical race splits may support a race-pacing model, with its own data source and evaluation.</p>
-      <p><a class="back-link" href="index.html#work">← Back to selected work</a></p>
-    </article></div>
+    <section class="ultra-hero wrap" aria-labelledby="ultra-title">
+      <p class="eyebrow">UltraTrain / Product + data case study / 2026–2027</p>
+      <h1 id="ultra-title">What a 50-mile race<br>can teach a 100-mile build.</h1>
+      <p class="ultra-lead">I turned a Strava account export into a private training dashboard: one that reconstructs my first ultramarathon build, shows race-day pacing, and makes a 28-week plan measurable as new runs arrive.</p>
+      <p class="ultra-meta"><strong>My role:</strong> Product design, data pipeline and analysis <span aria-hidden="true">·</span> <strong>Tools:</strong> Python, HTML/CSS, Strava export</p>
+    </section>
+    <section class="ultra-baseline" aria-label="The 2025 baseline"><div class="wrap">
+      <p class="ultra-kicker">The 2025 baseline</p>
+      <dl class="ultra-stats"><div><dt>Pre-race training runs</dt><dd>35</dd></div><div><dt>Training volume</dt><dd>295 <small>mi</small></dd></div><div><dt>Race elapsed time</dt><dd>8h 43m</dd></div></dl>
+    </div></section>
+    <section class="ultra-section ultra-question" aria-labelledby="question-title"><div class="wrap">
+      <p class="eyebrow">01 / The question</p><h2 id="question-title">A result is not an explanation.</h2>
+      <p>The 50-mile finish gave me a result, but it did not explain how my training varied or which patterns deserved attention. I built a local tool to separate training from race day, summarize weekly volume, approximate elapsed pacing, and compare future planned workouts with recorded activity.</p>
+      <p class="ultra-callout">Descriptive analytics today. No validated 100-mile finish prediction.</p>
+    </div></section>
+    <section class="ultra-section ultra-evidence" aria-labelledby="evidence-title"><div class="wrap">
+      <p class="eyebrow">02 / The evidence</p><h2 id="evidence-title">The build was uneven. That matters.</h2>
+      <p>The account export shows 295 training miles across 35 runs before race day. Weekly mileage rose into September, then dipped sharply and fluctuated through November. The pattern is a baseline for asking better questions, not a recipe for the next race.</p>
+      <figure class="ultra-chart">
+        <div class="ultra-chart-head"><h3>Weekly training miles</h3><span>Peak 31.1 mi</span></div>
+        <div class="ultra-bars" role="img" aria-label="Nineteen weeks of training from July to November 2025. Mileage peaked at 31.1 miles in September; three weeks have no recorded running miles. Exact values are in the table below.">
+          <span title="Jul 14: 6.0 mi" style="height:17%"></span><span title="Jul 21: 0.0 mi" style="height:1%"></span><span title="Jul 28: 3.2 mi" style="height:9%"></span>
+          <span title="Aug 4: 19.5 mi" style="height:56%"></span><span title="Aug 11: 15.5 mi" style="height:44%"></span><span title="Aug 18: 18.0 mi" style="height:51%"></span><span title="Aug 25: 27.6 mi" style="height:79%"></span>
+          <span title="Sep 1: 23.9 mi" style="height:68%"></span><span title="Sep 8: 25.6 mi" style="height:73%"></span><span title="Sep 15: 27.6 mi" style="height:79%"></span><span class="peak" title="Sep 22: 31.1 mi" style="height:89%"></span><span title="Sep 29: 0.0 mi" style="height:1%"></span>
+          <span title="Oct 6: 9.1 mi" style="height:26%"></span><span title="Oct 13: 23.7 mi" style="height:68%"></span><span title="Oct 20: 18.0 mi" style="height:51%"></span><span title="Oct 27: 15.0 mi" style="height:43%"></span>
+          <span title="Nov 3: 16.4 mi" style="height:47%"></span><span title="Nov 10: 14.9 mi" style="height:43%"></span><span title="Nov 17: 0.0 mi" style="height:1%"></span>
+        </div>
+        <div class="ultra-months" aria-hidden="true"><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div>
+        <figcaption>Training runs only. The 50-mile event is excluded; zero-mile weeks remain visible. This describes recorded activity, not fitness or injury risk.</figcaption>
+      </figure>
+      <details class="ultra-data"><summary>See the weekly mileage data</summary>
+        <table><caption>Running miles by week before the 2025 race</caption><thead><tr><th scope="col">Week of</th><th scope="col">Miles</th></tr></thead><tbody>
+          <tr><th scope="row">Jul 14</th><td>6.0</td></tr><tr><th scope="row">Jul 21</th><td>0.0</td></tr><tr><th scope="row">Jul 28</th><td>3.2</td></tr>
+          <tr><th scope="row">Aug 4</th><td>19.5</td></tr><tr><th scope="row">Aug 11</th><td>15.5</td></tr><tr><th scope="row">Aug 18</th><td>18.0</td></tr><tr><th scope="row">Aug 25</th><td>27.6</td></tr>
+          <tr><th scope="row">Sep 1</th><td>23.9</td></tr><tr><th scope="row">Sep 8</th><td>25.6</td></tr><tr><th scope="row">Sep 15</th><td>27.6</td></tr><tr><th scope="row">Sep 22</th><td>31.1</td></tr><tr><th scope="row">Sep 29</th><td>0.0</td></tr>
+          <tr><th scope="row">Oct 6</th><td>9.1</td></tr><tr><th scope="row">Oct 13</th><td>23.7</td></tr><tr><th scope="row">Oct 20</th><td>18.0</td></tr><tr><th scope="row">Oct 27</th><td>15.0</td></tr>
+          <tr><th scope="row">Nov 3</th><td>16.4</td></tr><tr><th scope="row">Nov 10</th><td>14.9</td></tr><tr><th scope="row">Nov 17</th><td>0.0</td></tr>
+        </tbody></table>
+      </details>
+    </div></section>
+    <section class="ultra-section ultra-pacing" aria-labelledby="pacing-title"><div class="wrap">
+      <p class="eyebrow">03 / Race-day pacing</p><h2 id="pacing-title">A finish time needs context.</h2>
+      <p>Approximate elapsed pace by 10-mile section from the race track. The middle section was fastest; later sections slowed. Elapsed pace includes stops, and without heart rate, fueling, or effort notes I cannot identify the cause.</p>
+      <ol class="ultra-splits" aria-label="Elapsed pace by 10-mile section"><li><span>0–10 mi</span><strong>11:02</strong><small>per mile</small></li><li><span>10–20 mi</span><strong>10:19</strong><small>per mile</small></li><li class="fastest"><span>20–30 mi</span><strong>8:34</strong><small>per mile</small></li><li><span>30–40 mi</span><strong>10:14</strong><small>per mile</small></li><li><span>40–50 mi</span><strong>10:48</strong><small>per mile</small></li></ol>
+      <p class="ultra-note">The final 1.4 GPS miles are excluded from these equal-distance comparisons. Segment boundaries are approximate.</p>
+    </div></section>
+    <section class="ultra-section ultra-product" aria-labelledby="product-title"><div class="wrap">
+      <p class="eyebrow">04 / The product</p><h2 id="product-title">From export to a useful review.</h2>
+      <p>UltraTrain reads my requested account export locally, checks and summarizes activities, and generates a static dashboard. It does not send the underlying workout data to a server.</p>
+      <ol class="ultra-flow"><li><span>01</span><h3>Strava export</h3><p>Activity summaries and a detailed race track.</p></li><li><span>02</span><h3>Python pipeline</h3><p>Filter runs, separate race day, calculate weekly volume and splits.</p></li><li><span>03</span><h3>Private dashboard</h3><p>Review the baseline and compare a plan with recorded training.</p></li></ol>
+    </div></section>
+    <section class="ultra-section ultra-decisions" aria-labelledby="decisions-title"><div class="wrap">
+      <p class="eyebrow">05 / Design decisions</p><h2 id="decisions-title">The honest boundaries are part of the product.</h2>
+      <dl><div><dt>Keep zero-mile weeks</dt><dd>Missing weeks stay visible so a chart cannot suggest uninterrupted growth.</dd></div><div><dt>Flag ambiguity</dt><dd>A checked-off workout recorded after midnight is flagged for review instead of silently matched.</dd></div><div><dt>Do not invent physiology</dt><dd>The export lacks heart-rate samples and consistent effort notes. Pace cannot establish fatigue or readiness.</dd></div></dl>
+    </div></section>
+    <section class="ultra-next" aria-labelledby="next-title"><div class="wrap">
+      <p class="ultra-kicker">06 / What comes next</p><h2 id="next-title">The next 100 miles are new evidence.</h2>
+      <p>As the 28-week Umstead build unfolds, I can add short effort, recovery, and fueling notes, refresh the account export, and compare planned versus recorded training. After the race, the project can assess which expectations held up. A predictive model would require a separate, larger dataset and a genuine evaluation.</p>
+      <p class="ultra-next-foot">Jack Noble <span aria-hidden="true">·</span> Product + data <span aria-hidden="true">·</span> UltraTrain is an active project</p>
+    </div></section>
   </main>
-  <footer class="site-footer wrap"><span>© 2026 Jack Noble</span><div><a href="mailto:jnoble12@fordham.edu">Email</a><a href="https://www.linkedin.com/in/john-noble5/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></footer>
-</body></html>
+  <footer class="site-footer wrap"><span>© 2026 Jack Noble</span><div><a href="mailto:jnoble12@fordham.edu">Email</a><a href="https://www.linkedin.com/in/john-noble5/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="index.html#work">Back to work ↑</a></div></footer>
+</body>
+</html>

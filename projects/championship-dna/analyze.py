@@ -7,10 +7,15 @@ from pathlib import Path
 
 DATA = Path(__file__).with_name("champions_2020_2024.csv")
 QUERY = """
-SELECT team_name, year, wins, losses,
-       ROUND(100.0 * wins / (wins + losses), 1) AS win_pct
+SELECT team_name, year,
+       wins, losses,
+       ROUND(
+         100.0 * wins /
+         (wins + losses), 1
+       ) AS win_pct
 FROM championship_teams
-ORDER BY win_pct DESC, year DESC;
+ORDER BY win_pct DESC,
+         year DESC;
 """
 
 

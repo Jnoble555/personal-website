@@ -56,10 +56,15 @@
         <p class="eyebrow case-step">03 / THE METHOD</p>
         <h2>The SQL method</h2>
         <p>I kept one row per championship team, with its season, wins, and losses. The query calculates the same measure shown above and sorts the results. The <a href="https://github.com/Jnoble555/personal-website/tree/main/projects/championship-dna" target="_blank" rel="noopener noreferrer">public sample ↗</a> runs this query against a five-row CSV in an in-memory SQLite database.</p>
-        <pre class="sql-sample"><code>SELECT team_name, year, wins, losses,
-       ROUND(100.0 * wins / (wins + losses), 1) AS win_pct
+        <pre class="sql-sample"><code>SELECT team_name, year,
+       wins, losses,
+       ROUND(
+         100.0 * wins /
+         (wins + losses), 1
+       ) AS win_pct
 FROM championship_teams
-ORDER BY win_pct DESC, year DESC;</code></pre>
+ORDER BY win_pct DESC,
+         year DESC;</code></pre>
         <p class="record-sources">Season records: <a href="https://www.nba.com/news/boston-celtics-nba-championships" target="_blank" rel="noopener noreferrer">Celtics</a>, <a href="https://www.nba.com/lakers/history/season-by-season-records" target="_blank" rel="noopener noreferrer">Lakers</a>, <a href="https://www.nba.com/news/denver-nuggets-2023-nba-championship" target="_blank" rel="noopener noreferrer">Nuggets</a>, <a href="https://www.nba.com/warriors/championship/2022" target="_blank" rel="noopener noreferrer">Warriors</a>, and <a href="https://www.nba.com/standings?Season=2020-21" target="_blank" rel="noopener noreferrer">Bucks</a> (NBA).</p>
 
         <p class="eyebrow case-step">04 / THE TAKEAWAY</p>

@@ -87,3 +87,18 @@
 .ultra-next-foot{color:#a9c9a3;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;margin:28px 0 0}
 @media(max-width:900px){.ultra-splits{grid-template-columns:repeat(3,1fr)}.ultra-flow{grid-template-columns:1fr 1fr}.ultra-bars{gap:8px}}
 @media(max-width:640px){.ultra-hero{padding-block:66px 74px}.ultra-hero h1{font-size:clamp(2.8rem,9vw,4rem)}.ultra-hero h1 br{display:none}.ultra-hero .ultra-lead{font-size:1.13rem}.ultra-meta{line-height:1.7}.ultra-stats{grid-template-columns:1fr;gap:26px}.ultra-stats dd{font-size:2.8rem}.ultra-section{padding-block:68px}.ultra-section h2,.ultra-next h2{font-size:clamp(2.35rem,8vw,3rem)}.ultra-section>.wrap>p:not(.eyebrow):not(.ultra-callout):not(.ultra-note){font-size:1.04rem}.ultra-chart{padding:18px 16px}.ultra-bars{height:180px;gap:4px}.ultra-splits{grid-template-columns:repeat(2,1fr)}.ultra-flow{grid-template-columns:1fr}.ultra-decisions dl>div{grid-template-columns:1fr;gap:8px}.ultra-next{padding-block:70px}}
+
+.page-hero>p:not(.eyebrow){max-width:760px;color:var(--muted);font-size:1.17rem}
+.record-figure{margin:38px 0 48px;padding:30px;background:var(--white);border:1px solid var(--line)}
+.record-figure figcaption{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--moss);margin-bottom:25px}
+.record-bars{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.record-bars li{list-style:none;margin:0;line-height:1.3}
+.record-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px;font-size:.87rem}
+.record-label strong{color:var(--ink)}.record-label span{font-variant-numeric:tabular-nums;color:#526057;white-space:nowrap}
+.record-track{height:13px;background:#e2e7dc;overflow:hidden}.record-track span{display:block;height:100%;background:#839c83}
+.record-leader .record-track span{background:var(--accent)}
+.case-content .record-note{font-size:.77rem;line-height:1.55;color:var(--muted);margin:24px 0 0}
+.sql-sample{background:#20392d;color:#f3f4e9;padding:22px 24px;overflow-x:auto;font-size:.85rem;line-height:1.65}
+.case-content .record-sources{font-size:.8rem;line-height:1.6;color:var(--muted);margin-top:14px}
+.case-content a:hover{color:var(--accent)}
+@media(max-width:480px){.record-figure{padding:20px 16px}.record-label{font-size:.78rem}.sql-sample{font-size:.72rem;padding:18px}}

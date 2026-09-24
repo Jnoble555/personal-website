@@ -3,29 +3,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A SQL analysis comparing five recent NBA championship teams, including the 2024 Boston Celtics.">
+  <meta name="description" content="Championship DNA: a reproducible SQL comparison of regular-season records for five NBA champions, including the 2024 Celtics.">
   <title>Championship DNA — Jack Noble</title>
   <link rel="canonical" href="https://jacknoble.org/celtics.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://jacknoble.org/celtics.html">
   <meta property="og:title" content="Championship DNA — Jack Noble">
-  <meta property="og:description" content="A SQL case study comparing the 2024 Boston Celtics with four recent NBA champions.">
+  <meta property="og:description" content="A chart and reproducible SQL comparison of the 2024 Celtics with four recent NBA champions.">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap"><a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a><nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav><a class="header-link" href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a></header>
+  <header class="site-header wrap">
+    <a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a>
+    <nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+    <a class="header-link" href="assets/Jack-Noble-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+  </header>
   <main id="main">
-    <section class="page-hero wrap"><p class="eyebrow">CASE STUDY 02 · COMPLETED ANALYSIS</p><h1>A closer look at championship teams.</h1><p>How did the 2024 Boston Celtics compare with the four NBA champions before them? I used a small relational database and SQL queries to inspect several regular-season measures.</p><div class="meta-row"><span>SQL</span><span>SQLite</span><span>Sports analytics</span></div></section>
-    <div class="case-body wrap"><aside class="case-nav">CHAMPIONSHIP DNA<br>01 / QUESTION<br>02 / METHOD<br>03 / TAKEAWAY</aside><article class="case-content">
-      <h2>The question</h2><p>Strong teams can reach the same outcome in different ways. I wanted to compare the 2024 Celtics with recent champions through measures such as wins, scoring, and ball movement.</p>
-      <h2>The method</h2><p>I organized statistics for the 2020–2024 championship teams in SQLite and used SQL queries, including calculated measures and window functions, to compare them. The project emphasizes data modeling and clear analysis rather than claiming to predict future champions.</p>
-      <div class="number-row"><div class="number-cell"><strong>05</strong><span>Championship teams</span></div><div class="number-cell"><strong>2020–24</strong><span>Seasons compared</span></div><div class="number-cell"><strong>SQL</strong><span>Primary analysis tool</span></div></div>
-      <h2>The takeaway</h2><p>In this five-team comparison, the Celtics led several of the selected regular-season measures. The analysis describes differences among champions; because every team in the sample won the title, it cannot show which factors predict a championship.</p>
-      <div class="aside-note">A future predictive study would need every team-season, including teams that did not win, plus a held-out test period.</div>
-      <p><a class="back-link" href="index.html#work">← Back to selected work</a></p>
-    </article></div>
+    <section class="page-hero wrap">
+      <p class="eyebrow">CASE STUDY 02 · COMPLETED ANALYSIS</p>
+      <h1>A closer look at championship teams.</h1>
+      <p>How did the 2024 Boston Celtics compare with the four NBA champions before them? I used a small SQLite dataset to ask a focused question about regular-season records.</p>
+      <div class="meta-row"><span>SQL</span><span>SQLite</span><span>Sports analytics</span></div>
+    </section>
+    <div class="case-body wrap">
+      <aside class="case-nav">CHAMPIONSHIP DNA<br>01 / QUESTION<br>02 / EVIDENCE<br>03 / SQL METHOD<br>04 / TAKEAWAY</aside>
+      <article class="case-content">
+        <h2>The question</h2>
+        <p>The Celtics won 64 regular-season games in 2023–24. Raw wins are awkward to compare across these champions because the 2019–20 Lakers played 71 games and the 2020–21 Bucks played 72. I compared win percentage instead: wins divided by games played.</p>
+
+        <figure class="record-figure" aria-labelledby="record-title">
+          <figcaption id="record-title">Regular-season win percentage · 2020–24 NBA champions</figcaption>
+          <ol class="record-bars">
+            <li class="record-leader"><div class="record-label"><strong>2024 Celtics</strong><span>64–18 · 78.0%</span></div><div class="record-track"><span style="width:78.0%"></span></div></li>
+            <li><div class="record-label"><strong>2020 Lakers</strong><span>52–19 · 73.2%</span></div><div class="record-track"><span style="width:73.2%"></span></div></li>
+            <li><div class="record-label"><strong>2023 Nuggets</strong><span>53–29 · 64.6%</span></div><div class="record-track"><span style="width:64.6%"></span></div></li>
+            <li><div class="record-label"><strong>2022 Warriors</strong><span>53–29 · 64.6%</span></div><div class="record-track"><span style="width:64.6%"></span></div></li>
+            <li><div class="record-label"><strong>2021 Bucks</strong><span>46–26 · 63.9%</span></div><div class="record-track"><span style="width:63.9%"></span></div></li>
+          </ol>
+          <p class="record-note">Bars start at zero and use a common 0–100% scale. Percentages are calculated from each team’s regular-season wins and losses, then rounded to one decimal place.</p>
+        </figure>
+
+        <h2>The SQL method</h2>
+        <p>I kept one row per championship team, with its season, wins, and losses. The query calculates the same measure shown above and sorts the results. The <a href="https://github.com/Jnoble555/personal-website/tree/main/projects/championship-dna" target="_blank" rel="noopener noreferrer">public sample ↗</a> runs this query against a five-row CSV in an in-memory SQLite database.</p>
+        <pre class="sql-sample"><code>SELECT team_name, year, wins, losses,
+       ROUND(100.0 * wins / (wins + losses), 1) AS win_pct
+FROM championship_teams
+ORDER BY win_pct DESC, year DESC;</code></pre>
+        <p class="record-sources">Season records: <a href="https://www.nba.com/news/boston-celtics-nba-championships" target="_blank" rel="noopener noreferrer">Celtics</a>, <a href="https://www.nba.com/lakers/history/season-by-season-records" target="_blank" rel="noopener noreferrer">Lakers</a>, <a href="https://www.nba.com/news/denver-nuggets-2023-nba-championship" target="_blank" rel="noopener noreferrer">Nuggets</a>, <a href="https://www.nba.com/warriors/championship/2022" target="_blank" rel="noopener noreferrer">Warriors</a>, and <a href="https://www.nba.com/standings?Season=2020-21" target="_blank" rel="noopener noreferrer">Bucks</a> (NBA).</p>
+
+        <h2>The takeaway</h2>
+        <p>Boston had the highest regular-season win rate in this five-champion sample: 78.0%, compared with 73.2% for the next team, the 2020 Lakers. That is a descriptive result about these five seasons. The sample contains only champions, so it cannot establish what predicts a title or which team was strongest across eras.</p>
+        <div class="aside-note">A predictive study would need all team-seasons, including teams that did not win, and a held-out test period. Other measures such as scoring and assists can describe style, but they cannot fix that sampling problem.</div>
+        <p><a class="back-link" href="index.html#work">← Back to selected work</a></p>
+      </article>
+    </div>
   </main>
   <footer class="site-footer wrap"><span>© 2026 Jack Noble</span><div><a href="mailto:jnoble12@fordham.edu">Email</a><a href="https://www.linkedin.com/in/john-noble5/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></footer>
-</body></html>
+</body>
+</html>

@@ -11,9 +11,12 @@
   <meta property="og:title" content="Championship DNA — Jack Noble">
   <meta property="og:description" content="A chart and reproducible SQL comparison of the 2024 Celtics with four recent NBA champions.">
   <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Literata:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="case-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="wordmark" href="index.html" aria-label="Jack Noble, home">J<span class="mark-dot">.</span>N</a>
@@ -27,12 +30,17 @@
       <p>How did the 2024 Boston Celtics compare with the four NBA champions before them? I used a small SQLite dataset to ask a focused question about regular-season records.</p>
       <div class="meta-row"><span>SQL</span><span>SQLite</span><span>Sports analytics</span></div>
     </section>
+    <section class="case-baseline" aria-label="Championship DNA at a glance"><div class="wrap">
+      <p class="case-kicker">The five-team comparison</p>
+      <dl class="case-stats"><div><dt>Celtics win rate</dt><dd>78.0%</dd></div><div><dt>2024 record</dt><dd>64–18</dd></div><div><dt>Champions compared</dt><dd>05</dd></div></dl>
+    </div></section>
     <div class="case-body wrap">
-      <aside class="case-nav">CHAMPIONSHIP DNA<br>01 / QUESTION<br>02 / EVIDENCE<br>03 / SQL METHOD<br>04 / TAKEAWAY</aside>
       <article class="case-content">
+        <p class="eyebrow">01 / THE QUESTION</p>
         <h2>The question</h2>
         <p>The Celtics won 64 regular-season games in 2023–24. Raw wins are awkward to compare across these champions because the 2019–20 Lakers played 71 games and the 2020–21 Bucks played 72. I compared win percentage instead: wins divided by games played.</p>
 
+        <p class="eyebrow case-step">02 / THE EVIDENCE</p>
         <figure class="record-figure" aria-labelledby="record-title">
           <figcaption id="record-title">Regular-season win percentage · 2020–24 NBA champions</figcaption>
           <ol class="record-bars">
@@ -45,6 +53,7 @@
           <p class="record-note">Bars start at zero and use a common 0–100% scale. Percentages are calculated from each team’s regular-season wins and losses, then rounded to one decimal place.</p>
         </figure>
 
+        <p class="eyebrow case-step">03 / THE METHOD</p>
         <h2>The SQL method</h2>
         <p>I kept one row per championship team, with its season, wins, and losses. The query calculates the same measure shown above and sorts the results. The <a href="https://github.com/Jnoble555/personal-website/tree/main/projects/championship-dna" target="_blank" rel="noopener noreferrer">public sample ↗</a> runs this query against a five-row CSV in an in-memory SQLite database.</p>
         <pre class="sql-sample"><code>SELECT team_name, year, wins, losses,
@@ -53,6 +62,7 @@ FROM championship_teams
 ORDER BY win_pct DESC, year DESC;</code></pre>
         <p class="record-sources">Season records: <a href="https://www.nba.com/news/boston-celtics-nba-championships" target="_blank" rel="noopener noreferrer">Celtics</a>, <a href="https://www.nba.com/lakers/history/season-by-season-records" target="_blank" rel="noopener noreferrer">Lakers</a>, <a href="https://www.nba.com/news/denver-nuggets-2023-nba-championship" target="_blank" rel="noopener noreferrer">Nuggets</a>, <a href="https://www.nba.com/warriors/championship/2022" target="_blank" rel="noopener noreferrer">Warriors</a>, and <a href="https://www.nba.com/standings?Season=2020-21" target="_blank" rel="noopener noreferrer">Bucks</a> (NBA).</p>
 
+        <p class="eyebrow case-step">04 / THE TAKEAWAY</p>
         <h2>The takeaway</h2>
         <p>Boston had the highest regular-season win rate in this five-champion sample: 78.0%, compared with 73.2% for the next team, the 2020 Lakers. That is a descriptive result about these five seasons. The sample contains only champions, so it cannot establish what predicts a title or which team was strongest across eras.</p>
         <div class="aside-note">A predictive study would need all team-seasons, including teams that did not win, and a held-out test period. Other measures such as scoring and assists can describe style, but they cannot fix that sampling problem.</div>

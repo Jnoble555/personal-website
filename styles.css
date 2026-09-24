@@ -1,4 +1,4 @@
-:root{--paper:#f5f3ed;--ink:#20251f;--muted:#647066;--line:#c9cec3;--accent:#c15d37;--moss:#233c2f;--moss-light:#dce4d7;--white:#fffefa;--font-sans:Inter,"Segoe UI",Arial,sans-serif;--font-serif:Georgia,"Times New Roman",serif}
+:root{--paper:#f5f3ed;--ink:#20251f;--muted:#647066;--line:#c9cec3;--accent:#c15d37;--moss:#233c2f;--moss-light:#dce4d7;--white:#fffefa;--font-sans:Inter,"Segoe UI",Arial,sans-serif;--font-serif:"Literata",Georgia,"Times New Roman",serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.6}a{color:inherit}a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}img,svg{max-width:100%}.wrap{width:min(100% - 64px,1280px);margin-inline:auto}.skip-link{position:absolute;left:-9999px;top:8px;padding:10px;background:#fff;z-index:10}.skip-link:focus{left:8px}
 .site-header{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:28px}.wordmark{font-size:1.6rem;font-weight:800;letter-spacing:-.1em;text-decoration:none;line-height:1}.mark-dot{color:var(--accent)}.site-header nav{display:flex;gap:34px}.site-header nav a,.header-link{font-size:.82rem;font-weight:650;text-decoration:none}.site-header nav a:hover,.header-link:hover,.text-link:hover,.project-link:hover{color:var(--accent)}.header-link{border-bottom:1px solid currentColor;padding-bottom:4px}
 .hero{min-height:695px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(400px,.85fr);gap:clamp(40px,6vw,100px);align-items:center;padding-block:64px 98px}.hero-copy{max-width:770px}.eyebrow{font-size:.73rem;font-weight:800;letter-spacing:.19em;color:var(--accent);text-transform:uppercase;margin:0 0 22px}.eyebrow-line{display:inline-block;width:30px;height:1px;background:currentColor;vertical-align:middle;margin-right:8px}.hero h1{font-family:var(--font-serif);font-size:clamp(4.3rem,7.2vw,8.5rem);line-height:.98;font-weight:400;letter-spacing:-.07em;margin:0 0 30px}.hero h1 em,.contact-grid h2 em{color:var(--accent);font-weight:400}.hero-intro{font-size:1.18rem;line-height:1.7;max-width:560px;color:#4b574d;margin:0}.hero-actions{display:flex;align-items:center;gap:30px;margin-top:40px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:space-between;gap:25px;min-height:56px;padding:15px 20px;text-decoration:none;font-size:.86rem;font-weight:750;transition:transform .2s ease,background .2s ease}.button:hover{transform:translateY(-3px)}.button-dark{background:var(--ink);color:var(--white)}.button-dark:hover{background:var(--moss)}.text-link{font-size:.86rem;font-weight:750;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
@@ -102,3 +102,42 @@
 .case-content .record-sources{font-size:.8rem;line-height:1.6;color:var(--muted);margin-top:14px}
 .case-content a:hover{color:var(--accent)}
 @media(max-width:480px){.record-figure{padding:20px 16px}.record-label{font-size:.78rem}.sql-sample{font-size:.72rem;padding:18px}}
+
+/* Portfolio typography and evidence treatments drawn from the UltraTrain Figma study. */
+.hero h1{font-size:clamp(4rem,6.5vw,7.2rem);line-height:1.06;letter-spacing:-.06em}
+.section-heading h2,.about-grid h2,.feature-content h3,.contact-grid h2,.page-hero h1,.case-content h2{line-height:1.12;letter-spacing:-.055em}
+.celtics-visual{background:#dce4d7}
+.celtics-proof{position:relative;z-index:2;margin:auto 0 24px}
+.celtics-proof-label{display:block;font-size:.68rem;font-weight:800;letter-spacing:.13em;margin-bottom:12px}
+.celtics-proof>div{display:flex;align-items:end;gap:28px}
+.celtics-proof strong{font:400 clamp(5.4rem,8.5vw,8.6rem)/.9 var(--font-serif);letter-spacing:-.085em}
+.celtics-proof small{font-size:.42em;letter-spacing:-.04em}
+.celtics-proof>div>span{font-size:.72rem;font-weight:800;letter-spacing:.08em;line-height:1.45;padding-bottom:8px}
+.celtics-mini-bars{display:grid;gap:7px;margin-bottom:34px;width:min(100%,390px)}
+.celtics-mini-bars i{display:block;height:10px;background:#84a48c}
+.celtics-mini-bars i:first-child{background:var(--accent)}
+.case-page .wrap{width:min(100% - 48px,1120px)}
+.case-page .page-hero{padding-block:88px 98px}
+.case-page .page-hero h1{font-size:clamp(3.8rem,5.55vw,5rem);max-width:1050px;margin-bottom:24px}
+.case-page .page-hero>p:not(.eyebrow){max-width:930px;font-size:1.5rem;line-height:1.45;color:#5d6960}
+.case-page .page-hero .meta-row{margin-top:28px}
+.case-baseline{background:var(--moss);color:#fffffa;padding-block:48px 54px}
+.case-kicker{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:0}
+.case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:18px 0 0}
+.case-stats div{display:flex;flex-direction:column-reverse}
+.case-stats dt{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d2dfd0}
+.case-stats dd{font:400 clamp(2.5rem,3.3vw,3.6rem)/1.2 var(--font-serif);letter-spacing:-.04em;margin:0 0 10px}
+.case-page .case-body{display:block;padding-block:80px 110px}
+.case-page .case-content{max-width:1000px}
+.case-page .case-content h2{font-size:clamp(2.65rem,3.7vw,3.45rem);margin:0 0 20px}
+.case-page .case-content>p:not(.eyebrow):not(.record-sources){font-size:1.13rem;line-height:1.65;max-width:930px}
+.case-page .case-content .eyebrow{margin:0 0 18px}
+.case-page .case-content .case-step{margin-top:75px}
+.case-page .record-figure{margin:0 0 50px;padding:32px 36px;max-width:1000px}
+.case-page .record-figure figcaption{font-size:.85rem}
+.case-page .record-label{font-size:.98rem}
+.case-page .record-track{height:15px}
+.case-page .sql-sample{max-width:1000px}
+@media(max-width:760px){.hero h1{font-size:clamp(3.7rem,12vw,5.6rem)}.celtics-proof strong{font-size:clamp(5rem,15vw,8rem)}.case-page .case-body{padding-block:66px 90px}}
+@media(max-width:640px){.case-page .page-hero{padding-block:66px 74px}.case-page .page-hero h1{font-size:clamp(2.8rem,9vw,4rem)}.case-page .page-hero>p:not(.eyebrow){font-size:1.13rem}.case-stats{grid-template-columns:1fr;gap:26px}.case-stats dd{font-size:2.8rem}.case-page .case-content h2{font-size:clamp(2.35rem,8vw,3rem)}.case-page .record-figure{padding:24px 20px}.case-page .record-label{font-size:.84rem}}
+@media(max-width:480px){.celtics-proof>div{display:block}.celtics-proof strong{font-size:5.2rem}.celtics-proof>div>span{display:block;padding:7px 0 0}.celtics-mini-bars{margin-bottom:20px}}

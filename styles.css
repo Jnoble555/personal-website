@@ -142,3 +142,4 @@
 @media(max-width:640px){.case-page .page-hero{padding-block:66px 74px}.case-page .page-hero h1{font-size:clamp(2.8rem,9vw,4rem)}.case-page .page-hero>p:not(.eyebrow){font-size:1.13rem}.case-stats{grid-template-columns:1fr;gap:26px}.case-stats dd{font-size:2.8rem}.case-page .case-content h2{font-size:clamp(2.35rem,8vw,3rem)}.case-page .record-figure{padding:24px 20px}.case-page .record-label{font-size:.84rem}}
 @media(max-width:480px){.celtics-proof>div{display:block}.celtics-proof strong{font-size:5.2rem}.celtics-proof>div>span{display:block;padding:7px 0 0}.celtics-mini-bars{margin-bottom:20px}}
 @media(max-width:640px){.case-page .sql-sample{white-space:pre-wrap;overflow-wrap:anywhere}}
+@media(max-width:480px){.feature-card,.feature-card.reverse{grid-template-columns:minmax(0,1fr)}.feature-visual,.feature-content{min-width:0}.site-header nav a{display:inline-flex;align-items:center;min-height:44px}}

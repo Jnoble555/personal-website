@@ -39,8 +39,8 @@
       <div class="meta-row"><span>SQL</span><span>Tableau</span><span>Sports analytics</span></div>
     </section>
     <section class="case-baseline" aria-label="Championship DNA at a glance"><div class="wrap">
-      <p class="case-kicker">The five-team comparison</p>
-      <dl class="case-stats"><div><dt>Celtics win rate</dt><dd>78.0%</dd></div><div><dt>2024 record</dt><dd>64–18</dd></div><div><dt>Champions compared</dt><dd>05</dd></div></dl>
+      <p class="case-kicker">The study at a glance</p>
+      <dl class="case-stats"><div><dt>Team-seasons studied</dt><dd>330</dd></div><div><dt>Champions compared</dt><dd>11</dd></div><div><dt>Boston scoring margin</dt><dd>+11.34</dd></div></dl>
     </div></section>
     <section class="dashboard-section" aria-labelledby="dashboard-title">
       <p class="eyebrow">INTERACTIVE TABLEAU DASHBOARD</p>
@@ -68,45 +68,44 @@
         <li>Only four of the 11 champions led their league in regular-season scoring margin. Dominant regular-season results did not guarantee a title.</li>
       </ul>
       <p>These findings remain readable if the interactive dashboard does not load. The analysis is descriptive, covers regular seasons from 2013–14 through 2023–24, and is not adjusted for pace or era.</p>
-      <p class="record-sources">Data: Wyatt Walsh's nbadb/Kaggle dataset (2013–14 to 2022–23; CC BY-SA 4.0), BoxScore Lab (2023–24; CC BY 4.0), and NBA Stats. Derived summaries are available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. The original five-champion SQL comparison follows below as a separate, smaller analysis.</p>
+      <p class="record-sources">Data: Wyatt Walsh's nbadb/Kaggle dataset (2013–14 to 2022–23; CC BY-SA 4.0), BoxScore Lab (2023–24; CC BY 4.0), and NBA Stats. Derived summaries are available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.</p>
     </section>
     <div class="case-body wrap">
       <article class="case-content">
         <p class="eyebrow">01 / THE QUESTION</p>
-        <h2>The question</h2>
-        <p>The Celtics won 64 regular-season games in 2023–24. Raw wins are awkward to compare across these champions because the 2019–20 Lakers played 71 games and the 2020–21 Bucks played 72. I compared win percentage instead: wins divided by games played.</p>
+        <h2>Dominant in their season. Unusual across eleven.</h2>
+        <p>Boston's 64–18 record tells one part of the story. I wanted to understand how far the 2023–24 Celtics separated from their league, how that season compared with Boston's earlier teams, and where it stood among recent champions and non-champions.</p>
+        <p>The dashboard connects four views: a league-wide comparison of three-point attempt share and scoring margin, Boston's eleven-season margin trend, the eleven champions, and the ten highest-margin team-seasons in the study.</p>
 
-        <p class="eyebrow case-step">02 / THE EVIDENCE</p>
-        <figure class="record-figure" aria-labelledby="record-title">
-          <figcaption id="record-title">Regular-season win percentage · 2020–24 NBA champions</figcaption>
-          <ol class="record-bars">
-            <li class="record-leader"><div class="record-label"><strong>2024 Celtics</strong><span>64–18 · 78.0%</span></div><div class="record-track"><span style="width:78.0%"></span></div></li>
-            <li><div class="record-label"><strong>2020 Lakers</strong><span>52–19 · 73.2%</span></div><div class="record-track"><span style="width:73.2%"></span></div></li>
-            <li><div class="record-label"><strong>2023 Nuggets</strong><span>53–29 · 64.6%</span></div><div class="record-track"><span style="width:64.6%"></span></div></li>
-            <li><div class="record-label"><strong>2022 Warriors</strong><span>53–29 · 64.6%</span></div><div class="record-track"><span style="width:64.6%"></span></div></li>
-            <li><div class="record-label"><strong>2021 Bucks</strong><span>46–26 · 63.9%</span></div><div class="record-track"><span style="width:63.9%"></span></div></li>
-          </ol>
-          <p class="record-note">Bars start at zero and use a common 0–100% scale. Percentages are calculated from each team’s regular-season wins and losses, then rounded to one decimal place.</p>
-        </figure>
+        <p class="eyebrow case-step">02 / THE DATASET</p>
+        <h2>330 team-seasons, including non-champions.</h2>
+        <p>The dataset covers all 30 NBA teams in each regular season from 2013–14 through 2023–24. Each of its 330 rows represents one team in one season; eleven rows are championship teams. Playoff games are excluded from the metrics, and championship outcomes are joined separately as labels.</p>
+        <p>Historical game records come from nbadb/Kaggle through 2022–23, with BoxScore Lab supplying 2023–24. Python normalizes team abbreviations and converts games into reciprocal team-game records, then SQLite aggregates the season totals. Tableau uses the derived season summaries.</p>
+        <p>The saved audit checks season coverage, expected game counts, reciprocal scores, and one champion per season. All 60 team records and scoring averages checked against BoxScore Lab standings for 2022–23 and 2023–24 reconcile without mismatches.</p>
 
         <p class="eyebrow case-step">03 / THE METHOD</p>
-        <h2>The SQL method</h2>
-        <p>I kept one row per championship team, with its season, wins, and losses. The query calculates the same measure shown above and sorts the results. The <a href="https://github.com/Jnoble555/personal-website/tree/main/projects/championship-dna" target="_blank" rel="noopener noreferrer">public sample ↗</a> runs this query against a five-row CSV in an in-memory SQLite database.</p>
-        <pre class="sql-sample"><code>SELECT team_name, year,
-       wins, losses,
-       ROUND(
-         100.0 * wins /
-         (wins + losses), 1
-       ) AS win_pct
-FROM championship_teams
-ORDER BY win_pct DESC,
-         year DESC;</code></pre>
-        <p class="record-sources">Season records: <a href="https://www.nba.com/news/boston-celtics-nba-championships" target="_blank" rel="noopener noreferrer">Celtics</a>, <a href="https://www.nba.com/lakers/history/season-by-season-records" target="_blank" rel="noopener noreferrer">Lakers</a>, <a href="https://www.nba.com/news/denver-nuggets-2023-nba-championship" target="_blank" rel="noopener noreferrer">Nuggets</a>, <a href="https://www.nba.com/warriors/championship/2022" target="_blank" rel="noopener noreferrer">Warriors</a>, and <a href="https://www.nba.com/standings?Season=2020-21" target="_blank" rel="noopener noreferrer">Bucks</a> (NBA).</p>
+        <h2>Aggregate first, then compare.</h2>
+        <p>Scoring margin is total points scored minus total points allowed, divided by actual games played. It is not possession-adjusted net rating. Using actual games accounts for the shortened 2019–20 and 2020–21 seasons. Shooting and ball-management ratios divide season totals rather than averaging game-level percentages.</p>
+        <p>SQL window functions rank teams within each season and across the full study period. The historical ranking keeps non-champions in the comparison, so the dashboard can show that a strong regular season did not guarantee a title. This excerpt from the project's historical-margin view ranks the unrounded values:</p>
+        <pre class="sql-sample"><code>SELECT season, team, games,
+       wins, losses, margin_pg,
+       is_champion,
+       RANK() OVER (
+         ORDER BY margin_pg DESC
+       ) AS historical_margin_rank
+FROM team_season;</code></pre>
+        <p>The league scatterplot uses three-point attempt share: three-point attempts divided by all field-goal attempts. That measure describes shot selection, not shot quality or a causal explanation of winning. The champion panel's rank labels refer to each champion's scoring-margin rank within its own season.</p>
 
         <p class="eyebrow case-step">04 / THE TAKEAWAY</p>
-        <h2>The takeaway</h2>
-        <p>Boston had the highest regular-season win rate in this five-champion sample: 78.0%, compared with 73.2% for the next team, the 2020 Lakers. That is a descriptive result about these five seasons. The sample contains only champions, so it cannot establish what predicts a title or which team was strongest across eras.</p>
-        <div class="aside-note">A predictive study would need all team-seasons, including teams that did not win, and a held-out test period. Other measures such as scoring and assists can describe style, but they cannot fix that sampling problem.</div>
+        <h2>Boston's separation was exceptional.</h2>
+        <p>Boston led the 2023–24 league with a +11.34-point margin per game. Oklahoma City followed at +7.41, a gap of 3.93 points. Across all 330 team-seasons, Boston ranked second behind the 2016–17 Warriors at +11.63.</p>
+        <p>Boston's margin rose from +6.52 in 2022–23 to +11.34 in 2023–24. Its three-point attempt share fell slightly, from 47.98% to 47.08%, so the improvement cannot be explained simply as taking a larger share of threes.</p>
+        <p>Only four of the eleven champions led their regular-season league in scoring margin, although all eleven ranked in the top six. The 2015–16 Warriors and Spurs both exceeded a ten-point margin and did not win the title. The result supports a descriptive claim about Boston's dominance, not a rule for predicting champions.</p>
+        <div class="aside-note">Scope and limitations: this study covers 2013–14 through 2023–24, not all NBA history. Per-game margin is not adjusted for pace, schedule, overtime, or era. The analysis does not account for injuries, roster availability, or playoff opposition. Repeated franchises are not independent experiments, and no held-out prediction test or causal analysis was performed.</div>
+
+        <p class="eyebrow case-step">05 / SOURCES</p>
+        <h2>Sources and attribution</h2>
+        <p class="record-sources">Historical games: Wyatt Walsh's <a href="https://github.com/wyattowalsh/nbadb" target="_blank" rel="noopener noreferrer">nbadb</a> / <a href="https://www.kaggle.com/datasets/wyattowalsh/basketball" target="_blank" rel="noopener noreferrer">Kaggle basketball release</a> (2013–14 through 2022–23; CC BY-SA 4.0). Recent games and reconciliation standings: <a href="https://boxscorelab.com/downloads/" target="_blank" rel="noopener noreferrer">BoxScore Lab</a> (CC BY 4.0; source snapshot through September 21, 2026, build 20260922T0220). Upstream statistics: NBA Stats. Championship labels: <a href="https://www.nba.com/news/history-nba-champions" target="_blank" rel="noopener noreferrer">NBA champion history</a>. Derived summaries are offered under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. The saved build audit records source hashes, coverage, and reconciliation results.</p>
         <p><a class="back-link" href="index.html#work">← Back to selected work</a></p>
       </article>
     </div>

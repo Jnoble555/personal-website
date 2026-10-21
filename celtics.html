@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Championship DNA: a reproducible SQL comparison of regular-season records for five NBA champions, including the 2024 Celtics.">
+  <meta name="description" content="An interactive Tableau dashboard exploring the 2024 Celtics across 330 NBA team-seasons, with SQL analysis, findings, and limitations.">
   <title>Championship DNA — Jack Noble</title>
   <link rel="canonical" href="https://jacknoble.org/celtics.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://jacknoble.org/celtics.html">
   <meta property="og:title" content="Championship DNA — Jack Noble">
-  <meta property="og:description" content="A chart and reproducible SQL comparison of the 2024 Celtics with four recent NBA champions.">
+  <meta property="og:description" content="Explore Boston's 2024 dominance through four Tableau charts covering 330 team-seasons and 11 champions.">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Literata:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260924">
+  <style>
+    .dashboard-section{width:min(100% - 48px,1200px);margin:64px auto 0}
+    .dashboard-section h2{font:400 clamp(2.35rem,4vw,3.45rem)/1.12 var(--font-serif);letter-spacing:-.055em}
+    .dashboard-section p,.dashboard-section li{max-width:930px;color:var(--muted)}
+    .dashboard-frame{display:block;width:100%;height:1850px;border:1px solid var(--line);background:var(--white);margin-top:28px}
+    .dashboard-section li{margin-block:10px}
+    @media(max-width:1247px){.dashboard-frame{height:1910px}}
+  </style>
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -27,13 +35,41 @@
     <section class="page-hero wrap">
       <p class="eyebrow">CASE STUDY 02 · COMPLETED ANALYSIS</p>
       <h1>A closer look at championship teams.</h1>
-      <p>How did the 2024 Boston Celtics compare with the four NBA champions before them? I used a small SQLite dataset to ask a focused question about regular-season records.</p>
-      <div class="meta-row"><span>SQL</span><span>SQLite</span><span>Sports analytics</span></div>
+      <p>How dominant were the 2023–24 Boston Celtics? I used SQL and Tableau to compare Boston with the league, 11 champions, and 330 regular-season team-seasons from 2013–14 through 2023–24.</p>
+      <div class="meta-row"><span>SQL</span><span>Tableau</span><span>Sports analytics</span></div>
     </section>
     <section class="case-baseline" aria-label="Championship DNA at a glance"><div class="wrap">
       <p class="case-kicker">The five-team comparison</p>
       <dl class="case-stats"><div><dt>Celtics win rate</dt><dd>78.0%</dd></div><div><dt>2024 record</dt><dd>64–18</dd></div><div><dt>Champions compared</dt><dd>05</dd></div></dl>
     </div></section>
+    <section class="dashboard-section" aria-labelledby="dashboard-title">
+      <p class="eyebrow">INTERACTIVE TABLEAU DASHBOARD</p>
+      <h2 id="dashboard-title">How dominant were the 2023–24 Celtics?</h2>
+      <p>Explore the 2024 league comparison, Boston's scoring-margin trend, the 11 champions, and the top historical scoring margins. Select a mark to inspect its details. Scoring margin is points scored minus points allowed per game.</p>
+      <p><a href="https://public.tableau.com/views/CelticsChampionshipAnalysis-publishready/Howdominantwerethe2023-24BostonCeltics" target="_blank" rel="noopener noreferrer">Open the dashboard on Tableau Public ↗</a></p>
+      <iframe class="dashboard-frame" id="celtics-dashboard" title="Celtics Championship Analysis: four interactive Tableau charts" loading="lazy" src="https://public.tableau.com/views/CelticsChampionshipAnalysis-publishready/Howdominantwerethe2023-24BostonCeltics?:embed=yes&amp;:showVizHome=no&amp;:tabs=no&amp;device=phone"></iframe>
+      <script>
+        (() => {
+          const frame = document.getElementById('celtics-dashboard');
+          const compact = window.matchMedia('(max-width: 1247px)');
+          const updateLayout = () => {
+            const url = new URL(frame.src);
+            url.searchParams.set('device', compact.matches ? 'phone' : 'desktop');
+            if (url.href !== frame.src) frame.src = url.href;
+          };
+          updateLayout();
+          compact.addEventListener('change', updateLayout);
+        })();
+      </script>
+      <h3>Key findings</h3>
+      <ul>
+        <li>Boston finished 64–18 with a +11.34-point scoring margin per game, leading the 2023–24 league.</li>
+        <li>That margin ranks second among the 330 team-seasons studied, behind the 2016–17 Warriors at +11.63.</li>
+        <li>Only four of the 11 champions led their league in regular-season scoring margin. Dominant regular-season results did not guarantee a title.</li>
+      </ul>
+      <p>These findings remain readable if the interactive dashboard does not load. The analysis is descriptive, covers regular seasons from 2013–14 through 2023–24, and is not adjusted for pace or era.</p>
+      <p class="record-sources">Data: Wyatt Walsh's nbadb/Kaggle dataset (2013–14 to 2022–23; CC BY-SA 4.0), BoxScore Lab (2023–24; CC BY 4.0), and NBA Stats. Derived summaries are available under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. The original five-champion SQL comparison follows below as a separate, smaller analysis.</p>
+    </section>
     <div class="case-body wrap">
       <article class="case-content">
         <p class="eyebrow">01 / THE QUESTION</p>
